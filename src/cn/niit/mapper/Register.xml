@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.Register">
+<select id="selRegister" parameterType="user" resultType="user">
+select * from user  where userName=#{userName}
+</select>
+
+<select id="selByEmail"  parameterType="user" resultType="user">
+select * from user  where  email=#{email} 
+</select>
+
+<insert id="insRegister" parameterType="user">
+INSERT INTO USER (userName,pass,email) VALUES(#{userName},#{password},#{email})
+</insert>
+</mapper>

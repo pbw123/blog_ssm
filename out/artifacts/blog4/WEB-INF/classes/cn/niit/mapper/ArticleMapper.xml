@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.ArticleMapper">
+
+<!-- 文章内容及评论 -->
+<select id="ArticleComment" resultMap="artComRMId" parameterType="Integer">
+SELECT a.count,a.title,a.id AS aid,a.content as artCom,a.sysCategoryId,
+u.id AS uid,u.userName ,s.id AS sid ,s.categoryName AS scn,c.id AS cid ,
+c.categoryName AS ccn 
+<!--, com.content ,com.id AS comId,com.time,com.userId  -->FROM com, article AS a,
+USER AS u ,syscategory AS s,category AS c
+ WHERE a.userId=u.id AND s.id=a.sysCategoryId AND a.categoryId=c.id 
+  <!-- AND a.id= com.articalId --> AND a.id=#{0}
+</select>
+<resultMap type="Article" id="artComRMId">
+<id column="aid" property="id"/>
+<result column="title" property="title"/>
+<result column="count" property="count"/>
+<result column="artCom" property="content"/>
+
+<association property="user" javaType="user">
+<id column="uid" property="id"/>
+<result column="userName" property="userName"/>
+</association>
+
+<association property="sCategory" javaType="SysCategory">
+<id column="sid" property="id"/>
+<result column="scn" property="categoryName"/>
+</association>
+
+<association property="category" javaType="Category">
+<id column="cid" property="id"/>
+<result column="ccn" property="categoryName"/>
+</association>
+
+<collection property="coms" select="cn.niit.mapper.ArticleMapper.getCom" column="aid">
+<id column="id" property="id"/>
+<result column="content" property="content"/>
+<result column="time" property="time"/>
+<result column="userId" property="userId"/>
+<association property="user" select="cn.niit.mapper.ArticleMapper.ComName" column="userId"></association>
+</collection>
+
+<collection property="article" select="cn.niit.mapper.ArticleMapper.getRefArticle" 
+column="{id=aid,sysCategoryId=sysCategoryId}"></collection>
+</resultMap>
+<select id="ComName" resultType="user" parameterType="int">
+  SELECT user.userName FROM USER WHERE id=#{0}
+</select>
+
+<select id="getCom" parameterType="Integer" resultType="com">
+select * from com where articalId=#{0} 
+</select>
+
+<!-- 相关文章 -->
+<select id="getRefArticle" parameterType="map" resultType="article">
+ SELECT a.title,a.id FROM article as a WHERE isDelete=0 AND id!=#{id}
+  AND sysCategoryId=#{sysCategoryId} ORDER BY publishTime DESC LIMIT 5
+ </select>
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.AddArticle">
+
+<insert id="insArticle" parameterType="article">
+INSERT INTO article(title,userId,sysCategoryId,categoryId,content,summary)
+VALUES(#{title},#{userId},#{sysCategoryId},#{categoryId},#{content},#{summary})
+</insert>
+
+<select id="selArtCategory" parameterType="Integer" resultType="category">
+select categoryName,id from category where userId=#{0}
+</select>
+
+</mapper>

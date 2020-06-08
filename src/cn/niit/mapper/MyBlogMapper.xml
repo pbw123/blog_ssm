@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.MyBlogMapper">
+<select id="getMyBlog" parameterType="user" resultMap="myBlogRMId">
+ SELECT b.id as bid,b.blogName,b.description,b.annoucement,u.userName,u.id as uid FROM
+  blog_info AS b,USER AS u WHERE b.userId=#{id} and  b.userId=u.id
+</select>
+<resultMap type="BlogInfo" id="myBlogRMId">
+<id column="bid" property="id"/>
+<result column="blogName" property="blogName"/>
+<result column="description" property="description"/>
+<result column="annoucement" property="annoucement"/>
+
+<association property="user" javaType="user">
+<id column="uid" property="id"/>
+<result column="userName" property="userName"/>
+<collection property="articles" select="cn.niit.mapper.MyBlogMapper.getBlogArticle" column="{userId=uid}"></collection>
+</association>
+</resultMap>
+
+<select id="getBlogArticle" parameterType="map" resultType="article">
+select a.title,a.summary,a.count,a.isDelete,a.publishTime,a.id 
+from article as a where a.userId=#{userId} ORDER BY a.publishTime DESC
+</select>
+</mapper>

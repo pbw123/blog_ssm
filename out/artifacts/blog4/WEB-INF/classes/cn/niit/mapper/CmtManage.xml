@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.CmtManage">
+
+<select id="selArtCmtMng" parameterType="user" resultMap="artCmtRMId">
+select a.title,a.id as aid,a.publishTime from article  a where a.userId=#{id}
+</select>
+<resultMap type="Article" id="artCmtRMId"> 
+
+<id column="aid" property="id"/>
+<result column="title" property="title"/>
+<result column="publishTime" property="publishTime"/>
+
+<collection property="coms"  select="cn.niit.mapper.CmtManage.selComment" column="aid">
+<id column="cid" property="id"/>
+<result column="content" property="content"/>
+<result column="userId" property="userId"/>
+</collection>
+</resultMap>
+
+
+
+
+<select id="selComment" parameterType="integer" resultType="com">
+SELECT c.content,c.id AS cid,c.userId,c.time  FROM com c WHERE c.userId=#{0}
+</select>
+
+<!-- <select id="selComment"  resultType="com">
+SELECT c.content,c.id AS cid,c.userId,user.userName,user.id as uid  FROM com c,USER WHERE c.userId=1 AND user.id=c.userId
+</select>
+ -->
+
+<update id="delComment" parameterType="int">
+update com set isDelete=1 where id=#{0}
+</update>
+ 
+ <insert id="addComment">
+ INSERT INTO com(userId,articalId,content) VALUES(#{0},#{1},#{2})
+ </insert>
+ 
+ 
+ 
+</mapper>

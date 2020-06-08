@@ -1,0 +1,42 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="blog4">
+    <output-path>$PROJECT_DIR$/out/artifacts/blog4</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="blog4" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/asm-3.3.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/cglib-2.2.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/commons-fileupload-1.2.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/commons-io-2.4.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/commons-logging-1.1.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/javassist-3.17.1-GA.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/jstl-1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/junit-jupiter-api-5.2.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/log4j-1.2.17.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/log4j-api-2.0-rc1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/log4j-core-2.0-rc1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/mybatis-3.2.7.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/mybatis-spring-1.2.3.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/mysql-connector-java-8.0.11.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/slf4j-api-1.7.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/slf4j-log4j12-1.7.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-aop-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-aspects-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-beans-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-context-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-core-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-expression-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-jdbc-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-tx-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-web-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/spring-webmvc-4.1.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/standard-1.1.2.jar" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="blog4/web/Web" />
+    </root>
+  </artifact>
+</component>

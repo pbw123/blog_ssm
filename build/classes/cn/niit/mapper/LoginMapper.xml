@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.LoginMapper">
+<select id="getLogin" resultType="user" parameterType="user">
+select u.id,u.userName,u.id,u.isDelete,u.isApplied ,u.email from user as u 
+where u.userName=#{userName} and u.pass=#{password}
+</select>
+
+</mapper>

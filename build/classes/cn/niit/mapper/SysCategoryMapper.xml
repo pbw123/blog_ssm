@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.SysCategoryMapper">
+<!-- 这是网站首页面 -->
+<!-- 所有网站分类 -->
+<select id="getAllSysCategory" resultType="SysCategory">
+select * from sysCategory
+</select>
+<!-- 系统分类 -->
+<select id="selScategory" resultType="sysCategory">
+select * from sysCategory
+</select>
+<!-- 个人分类 -->
+<select id="selCategory" resultType="category">
+select * from category
+</select>
+<!-- 活跃博主 -->
+<select id="getActiveUser" parameterType="int" resultMap="ArticleRMId">
+select * from article GROUP BY userId  LIMIT #{id} 
+</select>
+<!-- 博文前十 -->
+<select id="topTenArticle" resultType="article">
+select * from article ORDER BY count desc limit 10
+</select>
+<!-- 首页分页 -->
+<select id="page" parameterType="pageInfo" resultMap="ArticleRMId">
+SELECT a.*,u.username FROM article AS a, USER AS u  WHERE u.id=a.userId 
+AND a. isDelete=0 ORDER BY publishTime DESC LIMIT #{pageStart},#{pageSize}
+</select>
+<select id="ArticleCount" resultType="int">
+select count(*) from article;
+</select>
+<resultMap type="Article" id="ArticleRMId">
+<id column="id" property="id"/>
+<result column="title" property="title"/>
+<result column="userId" property="userId"/>
+<result column="summary" property="summary"/>
+<result column="publishTime" property="publishTime"/>
+<result column="count" property="count"/>
+<association property="user" javaType="user" 
+select="cn.niit.mapper.SysCategoryMapper.getUser" column="userId">
+</association>
+</resultMap>
+<select id="getUser"  resultType="user" parameterType="int">
+select * from user where id=#{0}
+</select>
+
+<!-- 更新访问次数 -->
+<update id="addCount">
+update article set count=#{0} where id=#{1}
+</update>
+
+<!-- 搜索 -->
+<select id="search" resultType="article">
+SELECT * FROM article WHERE title LIKE 
+'%${value}%' OR content LIKE '%${value}%' 
+			OR summary LIKE '%${value}%' ORDER BY publishTime DESC
+</select>
+
+</mapper> 

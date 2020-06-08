@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.UpdBlogInfo">
+
+<select id="selBlogInfo" parameterType="Integer" resultType="BlogInfo">
+SELECT * FROM blog_info WHERE userId=#{0}
+</select>
+
+<insert id="insBlog" parameterType="blogInfo">
+INSERT INTO blog_info VALUES(DEFAULT,#{userId},#{blogName},#{description},#{annoucement})
+
+</insert>
+
+<update id="updBlog" parameterType="blogInfo">
+UPDATE blog_info SET blogName=#{blogName},description=#{description},annoucement=#{annoucement} WHERE userId=#{userId}
+
+</update>
+</mapper>

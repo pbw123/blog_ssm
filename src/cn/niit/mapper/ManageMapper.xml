@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.niit.mapper.ManageMapper">
+
+<select id="selManage" parameterType="integer" resultMap="articleRMId">
+SELECT a.title,a.id AS aid,a.publishTime, s.categoryName AS scn,s.id AS sid,
+c.id AS cid ,c.categoryName AS ccn 
+ FROM  article  a,syscategory  s,category  c
+ WHERE s.id=a.sysCategoryId AND a.categoryId=c.id and a.userId=#{0} 
+ and a.isDelete=0
+</select>
+<resultMap type="Article" id="articleRMId">
+<id column="aid" property="id"/>
+<result column="title" property="title"/>
+<result column="publishTime" property="publishTime"/>
+
+<association property="sCategory" javaType="SysCategory">
+<id column="sid" property="id"/>
+<result column="scn" property="categoryName"/>
+</association>
+
+<association property="category" javaType="Category">
+<id column="sid" property="id"/>
+<result column="ccn" property="categoryName"/>
+</association>
+
+
+</resultMap>
+</mapper>
