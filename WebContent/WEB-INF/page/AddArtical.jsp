@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                    ${selArticleInfo.content }
 	                    </textarea>
 	                </div>
-	                  
+
 	                <div class="form-group">
 	                    <button id="contact-submit" type="submit" class="btn btn-primary input-medium pull-right">保存</button>
 	                </div>

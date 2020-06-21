@@ -144,7 +144,7 @@
 				<c:if test="${user!=null&&user.isApplied==0}">
 
 					<div class="well" align="center">
-						<a class="btn btn-primary" href="<%=basePath%>ApplyBlog.jsp"
+						<a class="btn btn-primary" href="<%=basePath%>applyBlog"
 							target="_blank">申请个人博客</a>
 					</div>
 

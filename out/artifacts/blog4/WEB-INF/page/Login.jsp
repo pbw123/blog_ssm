@@ -131,9 +131,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="form-group">
 						<label for="username">用户名</label> 
-						<input type="text"
-							class="form-control " name="username" id="username"
-							placeholder="Enter email">
+						<input type="text" autocomplete="off"
+							   class="form-control " name="username" id="username"
+							placeholder="User name">
 					</div>
 					<div class="form-group">
 						<label for="password">密码</label> <input type="password"
